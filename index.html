@@ -10,6 +10,10 @@
         text-align: center;
     }
 </style>
+<script
+        src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
 <table>
     <table>
         <tr>
@@ -36,18 +40,32 @@
                     Образование Гималайской горной страны геологи связывают с расколом единого южного материка
                     Гондваны на несколько.
                 </p>
+
                 <p>
-                    <?php
-                        print("<h2>Третья статья</h2>");
-                        echo $_POST["articles"];
-                    ?>
+                <p>Введите вашу статью</p>
+                <textarea name="articles" class="article" cols="100" rows="10"></textarea><br>
+                <button>Отправить</button>
                 </p>
-                <form action="index.php" method="post">
-                    <p>Введите вашу статью</p>
-                    <textarea name="articles" cols="100" rows="10">
-                            </textarea>
-                    <p><input type="submit" value="Отправить"/></p>
-                </form>
+
+              <!--JQuery-->
+                <script>
+                    $(document).ready(function () {
+                        $('button').on('click', function () {
+                            const articleVal = $('textarea.article').val();
+                            <!--Ajax-->
+                            $.ajax({
+                                method: "POST",
+                                url: "action.php",
+                                data: {articles: articleVal}
+                            })
+                                .done(function () {
+                                    alert("Ваша статья сохранена и будет расмотрена модератором");
+                                });
+
+                            $('textarea.article').val('');
+                        })
+                    });
+                </script>
             </td>
         </tr>
     </table>
