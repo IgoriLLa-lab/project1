@@ -3,7 +3,8 @@
 use public_html\object\Article;
 
 include_once 'config/DataBase.php';
-include_once 'object/CreateSimpleArticle.php';
+include_once 'object/CreateDifferentEntities.php';
+include_once 'object/ReadDifferentEntities.php';
 include_once 'object/Article.php';
 
 
@@ -14,7 +15,7 @@ $article = new Article($db);
 
 $page_title = "Сайт для написания статей на любые темы";
 
-require_once "header.php";
+require_once "templates/header.php";
 ?>
 
 <script
@@ -29,7 +30,7 @@ require_once "header.php";
 <!--код для отправки данных из формы в БД-->
 <?php
 if ($_POST) {
-    // свойства статьи устанвливаем
+    //устанвливаем свойства статьи
     $article->name = $_POST['name'];
     $article->article = $_POST['article'];
     $article->category = $_POST['category'];
@@ -69,9 +70,9 @@ if ($_POST) {
 <script>
     $(document).ready(function () {
         $('button.btn-primary').one('click', function () {
-            var formName = $('input.form-control').val();
-            var formTextArea = $('textarea.form-control').val();
-            var formTextCategory = $('input.form-control1').val();
+            const formName = $('input.form-control').val();
+            const formTextArea = $('textarea.form-control').val();
+            const formTextCategory = $('input.form-control1').val();
 
             $.ajax({
                 method: "POST",
@@ -90,5 +91,5 @@ if ($_POST) {
 
 
 <?php
-require_once "footer.php";
+require_once "templates/footer.php";
 ?>

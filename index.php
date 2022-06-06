@@ -2,11 +2,10 @@
 
 use public_html\object\Article;
 
-$page = $_GET['page'] ?? 1;
-
 // подключаем файлы, необходимые для подключения к базе данных и файлы с объектами
 include_once 'config/database.php';
-include_once 'object/CreateSimpleArticle.php';
+include_once 'object/CreateDifferentEntities.php';
+include_once 'object/ReadDifferentEntities.php';
 include_once 'object/Article.php';
 
 // получили соединение с БД
@@ -21,7 +20,7 @@ $num = $stmt->rowCount();
 
 $page_title = "Сайт статей";
 
-require_once "header.php";
+require_once "templates/header.php";
 ?>
 
 <div class='right-button-margin'>
@@ -57,5 +56,5 @@ if ($num > 0) {
 ?>
 
 <?php
-require_once "footer.php";
+require_once "templates/footer.php";
 ?>

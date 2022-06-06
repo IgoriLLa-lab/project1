@@ -2,7 +2,8 @@
 
 namespace public_html\object;
 
-interface CreateSimpleArticle
+interface CreateDifferentEntities
 {
     function create(): bool;
+
 }

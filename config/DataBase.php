@@ -7,6 +7,7 @@ class DataBase
     private string $USER_NAME = 'root';
     private string $PASSWORD = 'root';
     private string $DB_NAME = 'php_db';
+
     public $conn;
 
     //получение соединения с базой данных

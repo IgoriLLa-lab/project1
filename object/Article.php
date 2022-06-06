@@ -1,18 +1,13 @@
 <?php
 
 namespace public_html\object;
+include_once 'object/GeneralEntityObjects.php';
 
-class Article implements CreateSimpleArticle
+
+class Article extends GeneralEntityObjects implements CreateDifferentEntities, ReadDifferentEntities
 {
     private $conn;
     private string $table_name = "articles";
-
-    // свойства объекта
-    public int $id;
-    public String $name;
-    public String $article;
-    public String $category;
-    public $timestamp;
 
     public function __construct($db) {
         $this->conn = $db;
